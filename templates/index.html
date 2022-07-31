@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Berthelot - covoiturage</title>
+    <link rel="stylesheet" type="text/css" href='{{ url_for('static', filename='styles.css') }}'>
+</head>
+<body>
+    {% block body %}
+    {% if current_user.is_authenticated %}
+        Hi {{ current_user.name }}!
+        <h1>
+            <a href="{{ url_for('login_site.fill_user_data') }}">Saisir les données de vos aller-retours</a>
+            <a href="{{ url_for('login_site.logout') }}">Se déconnecter</a>
+        </h1>
+    {% else %}
+    <h1>
+        <a href="{{ url_for('login_site.login') }}">Se connecter</a>
+        <a href="{{ url_for('login_site.record') }}">Créer un compte</a>
+    </h1>
+    {% endif %}
+    
+    {% endblock %}
+</body>
+</html>

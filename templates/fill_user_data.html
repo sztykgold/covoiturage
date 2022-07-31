@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Berthelot - covoiturage - renseignements</title>
+    <link rel="stylesheet" type="text/css" href='{{ url_for('static', filename='styles.css') }}'>
+</head>
+<body>
+    {% block body %}
+    {% if current_user.is_authenticated %}
+        Bonjour {{ current_user.id }}, il nous faut quelques informations pour pouvoir opérer
+        <form action="{{ url_for('login_site.fill_user_data') }}" method='POST'>
+            <input type='text' name='address' id='address' placeholder='5 rue Jean de la Fontaine'/>
+            <input type='number' name='zipcode' id='zipcode' placeholder='60180' pattern="[0-9]{5}"/>
+            <input type='text' name='phone' id='phone'/>
+            <input type='text' name='city' id='city' placeholder='Nogent-sur-Oise'/>
+<p></p>
+            <table>
+                <thead>
+                    <tr>Emploi du temps</tr>
+                    <tr><th></th><th>Semaine A - Début de journée</th><th>Semaine A - Fin de journée</th><th>Semaine B - Début de journée</th><th>Semaine B - Fin de journée</th></tr>
+                </thead>
+
+                
+                <tbody>
+                    <tr><td>Lundi</td>
+                        <td><select name="AMONDAYIn"><option value="NONE">Pas cours</option><option value="M1">M1</option><option value="M2">M2</option><option value="M3">M3</option><option value="M4">M4</option><option value="S1">S1</option><option value="S2">S2</option><option value="S3">S3</option></select></td>
+                        <td><select name="AMONDAYOut"><option value="NONE">Pas cours</option><option value="M1">M1</option><option value="M2">M2</option><option value="M3">M3</option><option value="M4">M4</option><option value="S1">S1</option><option value="S2">S2</option><option value="S3">S3</option></select></td>
+                        <td><select name="BMONDAYIn"><option value="NONE">Pas cours</option><option value="M1">M1</option><option value="M2">M2</option><option value="M3">M3</option><option value="M4">M4</option><option value="S1">S1</option><option value="S2">S2</option><option value="S3">S3</option></select></td>
+                        <td><select name="BMONDAYOut"><option value="NONE">Pas cours</option><option value="M1">M1</option><option value="M2">M2</option><option value="M3">M3</option><option value="M4">M4</option><option value="S1">S1</option><option value="S2">S2</option><option value="S3">S3</option></select></td>
+                    </tr>
+                    <tr><td>Mardi</td>
+                        <td><select name="ATUESDAYIn"><option value="NONE">Pas cours</option><option value="M1">M1</option><option value="M2">M2</option><option value="M3">M3</option><option value="M4">M4</option><option value="S1">S1</option><option value="S2">S2</option><option value="S3">S3</option></select></td>
+                        <td><select name="ATUESDAYOut"><option value="NONE">Pas cours</option><option value="M1">M1</option><option value="M2">M2</option><option value="M3">M3</option><option value="M4">M4</option><option value="S1">S1</option><option value="S2">S2</option><option value="S3">S3</option></select></td>
+                        <td><select name="BTUESDAYIn"><option value="NONE">Pas cours</option><option value="M1">M1</option><option value="M2">M2</option><option value="M3">M3</option><option value="M4">M4</option><option value="S1">S1</option><option value="S2">S2</option><option value="S3">S3</option></select></td>
+                        <td><select name="BTUESDAYOut"><option value="NONE">Pas cours</option><option value="M1">M1</option><option value="M2">M2</option><option value="M3">M3</option><option value="M4">M4</option><option value="S1">S1</option><option value="S2">S2</option><option value="S3">S3</option></select></td>
+                    </tr>
+                    <tr><td>Lundi</td>
+                        <td><select name="AWEDNESDAYIn"><option value="NONE">Pas cours</option><option value="M1">M1</option><option value="M2">M2</option><option value="M3">M3</option><option value="M4">M4</option><option value="S1">S1</option><option value="S2">S2</option><option value="S3">S3</option></select></td>
+                        <td><select name="AWEDNESDAYOut"><option value="NONE">Pas cours</option><option value="M1">M1</option><option value="M2">M2</option><option value="M3">M3</option><option value="M4">M4</option><option value="S1">S1</option><option value="S2">S2</option><option value="S3">S3</option></select></td>
+                        <td><select name="BWEDNESDAYIn"><option value="NONE">Pas cours</option><option value="M1">M1</option><option value="M2">M2</option><option value="M3">M3</option><option value="M4">M4</option><option value="S1">S1</option><option value="S2">S2</option><option value="S3">S3</option></select></td>
+                        <td><select name="BWEDNESDAYOut"><option value="NONE">Pas cours</option><option value="M1">M1</option><option value="M2">M2</option><option value="M3">M3</option><option value="M4">M4</option><option value="S1">S1</option><option value="S2">S2</option><option value="S3">S3</option></select></td>
+                    </tr>
+                    <tr><td>Lundi</td>
+                        <td><select name="ATHURSDAYIn"><option value="NONE">Pas cours</option><option value="M1">M1</option><option value="M2">M2</option><option value="M3">M3</option><option value="M4">M4</option><option value="S1">S1</option><option value="S2">S2</option><option value="S3">S3</option></select></td>
+                        <td><select name="ATHURSDAYOut"><option value="NONE">Pas cours</option><option value="M1">M1</option><option value="M2">M2</option><option value="M3">M3</option><option value="M4">M4</option><option value="S1">S1</option><option value="S2">S2</option><option value="S3">S3</option></select></td>
+                        <td><select name="BTHURSDAYIn"><option value="NONE">Pas cours</option><option value="M1">M1</option><option value="M2">M2</option><option value="M3">M3</option><option value="M4">M4</option><option value="S1">S1</option><option value="S2">S2</option><option value="S3">S3</option></select></td>
+                        <td><select name="BTHURSDAYOut"><option value="NONE">Pas cours</option><option value="M1">M1</option><option value="M2">M2</option><option value="M3">M3</option><option value="M4">M4</option><option value="S1">S1</option><option value="S2">S2</option><option value="S3">S3</option></select></td>
+                    </tr>
+                    <tr><td>Lundi</td>
+                        <td><select name="AFRIDAYIn"><option value="NONE">Pas cours</option><option value="M1">M1</option><option value="M2">M2</option><option value="M3">M3</option><option value="M4">M4</option><option value="S1">S1</option><option value="S2">S2</option><option value="S3">S3</option></select></td>
+                        <td><select name="AFRIDAYOut"><option value="NONE">Pas cours</option><option value="M1">M1</option><option value="M2">M2</option><option value="M3">M3</option><option value="M4">M4</option><option value="S1">S1</option><option value="S2">S2</option><option value="S3">S3</option></select></td>
+                        <td><select name="BFRIDAYIn"><option value="NONE">Pas cours</option><option value="M1">M1</option><option value="M2">M2</option><option value="M3">M3</option><option value="M4">M4</option><option value="S1">S1</option><option value="S2">S2</option><option value="S3">S3</option></select></td>
+                        <td><select name="BFRIDAYOut"><option value="NONE">Pas cours</option><option value="M1">M1</option><option value="M2">M2</option><option value="M3">M3</option><option value="M4">M4</option><option value="S1">S1</option><option value="S2">S2</option><option value="S3">S3</option></select></td>
+                    </tr> 
+                    
+                </tbody>
+                </table>
+
+            <input type='submit' name='Enregistrer'/>
+        </form>
+    {% else %}
+    <h1>
+        <a href="{{ url_for('login_site.login') }}">Se connecter</a>
+        <a href="{{ url_for('login_site.record') }}">Créer un compte</a>
+    </h1>
+    {% endif %}
+    
+    {% endblock %}
+</body>
+</html>
